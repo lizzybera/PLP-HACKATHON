@@ -1,18 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
 import { Bar } from "react-chartjs-2";
-import { readProgress } from "../../../utils/progressAPI";
-import { readDone } from "../../../utils/doneApi";
+import { airQualityAPI } from "../api/authApis";
+import { useState } from "react";
 
 // npm i react-chartjs-2 chart.js
 
-const ChartDone2 = () => {
-  const { data: done } = useQuery({
-    queryKey: ["done"],
-    queryFn: readDone,
-    refetchInterval: 1000,
-  });
+const AirQuality = () => {
+  const [info, setInfo] = useState();
+  const [state, setState] = useState({});
 
-  const Match = [done];
+  const getAirQuality = () => {
+    airQualityAPI(info).then((res: any) => {
+      setState(res);
+    });
+  };
+
+  console.log(state);
+
+  const Match = [state];
 
   const Match1 = Match.flat().map((props) => {
     return props?.assignedName;
@@ -67,20 +71,5 @@ const ChartDone2 = () => {
   };
 
   return <Bar data={data} />;
-  // const config = {
-  //     type: 'bar',
-  //     data: data,
-  //     options: {
-  //       scales: {
-  //         y: {
-  //           beginAtZero: true
-  //         }
-  //       }
-  //     },
-  //   };
 };
-// function ChartData (){
-//     return <Bar data={data} />
-// }
-
-export default ChartDone2;
+export default AirQuality;

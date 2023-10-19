@@ -11,6 +11,8 @@ import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
 import iii from "../assets/5-Figure2-1.png";
 import { useState, useEffect } from "react";
 import { weatherAPI } from "../api/authApis";
+import { CharAt } from "./chart";
+// import AirQuality from "./chart";
 
 const DetailScreen = () => {
   const dispatch = useDispatch();
@@ -61,7 +63,9 @@ const DetailScreen = () => {
               <span className="text-[14px] font-[450] ml-1 text-[red] ">
                 Oct 18, 04:35pm
               </span>
-              <span className="text-[20px] font-[700] ml-1 mb">{state?.location?.name}, {state?.location?.country}</span>
+              <span className="text-[20px] font-[700] ml-1 mb">
+                {state?.location?.name}, {state?.location?.country}
+              </span>
               <div>
                 <div className="flex items-center">
                   <TiWeatherShower className="text-[30px] ml-1" />
@@ -136,6 +140,9 @@ const DetailScreen = () => {
               <p className="text-[18px] font-[700] ml-2 screen320:m-0 screen375:m-0">
                 Hourly forecast
               </p>
+              <div>
+                <CharAt city={text} />
+              </div>
             </div>
             <div className="w-[45%] h-[350px] screen320:w-full screen375:w-full bg-[white]  ">
               <p className="text-[18px] font-[700] ml-3 screen320:m-0">

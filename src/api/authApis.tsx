@@ -48,6 +48,7 @@ export const weatherAPI = async (city: any) => {
     console.error(error);
   }
 };
+
 export const airQualityAPI = async (city: any) => {
   try {
     const options = {
@@ -59,7 +60,7 @@ export const airQualityAPI = async (city: any) => {
         country: "Nigeria",
       },
       headers: {
-        "X-RapidAPI-Key": "7125cb4487mshbd965494bef31d7p153a39jsn9d6da199480f",
+        "X-RapidAPI-Key": "ea2e164683msh0baca60a426587dp1473b6jsn629df191c764",
         "X-RapidAPI-Host": "air-quality-by-api-ninjas.p.rapidapi.com",
       },
     };
