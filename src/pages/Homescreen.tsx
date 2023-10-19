@@ -1,11 +1,11 @@
 import Hero2 from "./Hero2";
-// import Pixs from "./Pixs";
+import Comp2 from "./comp2";
 
 const Homescreen = () => {
   return (
     <div>
       <Hero2 />
-      {/* <Pixs/> */}
+      <Comp2 />
     </div>
   );
 };

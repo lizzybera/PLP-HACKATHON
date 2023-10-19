@@ -78,7 +78,7 @@ const Login = () => {
         <img src={imgs} alt="loading..." className="h-[300px] screen425:h-[150px] screen768:h-[180px] screen768:ml-5 " />
       </div>
       <div
-        className="w-[350px] h-[550px] bg-white rounded-xl mr-3 screen425:mb-5 screen425:ml-3"
+        className="w-[350px] h-[500px] bg-white rounded-xl mr-3 screen425:mb-5 screen425:ml-3"
         onSubmit={onSubmit}
       >
         <div className="flex items-center justify-end mt-5">
@@ -122,7 +122,7 @@ const Login = () => {
             </span>
           </div>
           <button
-            className=" px-5 py-3 flex items-center justify-center bg-[#004AAD] rounded-3xl  font-bold text-white  mt-5 screen425:text-[14px] screen425:px-[125px]  screen425:rounded-[10px] screen768:py-[10px] screen768:px-[40px]"
+            className=" px-12 py-3 flex items-center justify-center bg-[#004AAD] rounded-3xl  font-bold text-white  mt-11 screen425:text-[14px] screen425:px-[125px]  screen425:rounded-[10px] screen768:py-[10px] screen768:px-[40px]"
             type="submit"
           >
             Sign in
