@@ -11,6 +11,7 @@ import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
 import iii from "../assets/5-Figure2-1.png";
 import { useState, useEffect } from "react";
 import { weatherAPI } from "../api/authApis";
+import { CharAt } from "./chart";
 
 // gggghhnbniuy
 const DetailScreen = () => {
@@ -31,9 +32,8 @@ const DetailScreen = () => {
   // }, [state]);
 
   console.log(state);
- const humidity = state?.current?.humidity
- const cloud = state?.current?.cloud
-
+  const humidity = state?.current?.humidity;
+  const cloud = state?.current?.cloud;
 
   return (
     // container
@@ -63,9 +63,11 @@ const DetailScreen = () => {
           <div className="h-[40%] screen320:flex-col screen375:flex-col  w-full flex justify-between">
             <div className="w-[30%] flex flex-col screen320:w-full screen375:w-full screen375:my-2 pt-[10px]">
               <span className="text-[14px] font-[450] ml-1 text-[red] ">
-              {state?.location?.localtime}
+                {state?.location?.localtime}
               </span>
-              <span className="text-[20px] font-[700] ml-1 mb">{state?.location?.name}, {state?.location?.country}</span>
+              <span className="text-[20px] font-[700] ml-1 mb">
+                {state?.location?.name}, {state?.location?.country}
+              </span>
               <div>
                 <div className="flex items-center">
                   <TiWeatherShower className="text-[30px] ml-1" />
@@ -82,35 +84,39 @@ const DetailScreen = () => {
                   {/* first */}
                   <div className="flex items-center ml-1 mt-3">
                     <TiWeatherDownpour className="text-[22px] mr-1" />
-                    <span className="font-[400] text-[14px] ">{state?.current?.cloud}%</span>
+                    <span className="font-[400] text-[14px] ">
+                      {state?.current?.cloud}%
+                    </span>
                   </div>
                   <div className="flex items-center ml-1 mt-3">
                     <IoNavigate className="text-[20px] mr-1" />
-                    <span className="font-[400] text-[14px]">{state?.current?.wind_mph}m/h SSW</span>
+                    <span className="font-[400] text-[14px]">
+                      {state?.current?.wind_mph}m/h SSW
+                    </span>
                   </div>
                   {/* second */}
                   <div className="flex items-center mt-3">
                     <div className="flex items-center ml-1">
                       <RiCompassLine className="text-[22px] mr-1" />
-                      <span className="font-[400] text-[14px]">{state?.current?.pressure_mb}
-hPa</span>
+                      <span className="font-[400] text-[14px]">
+                        {state?.current?.pressure_mb}
+                        hPa
+                      </span>
                     </div>
 
                     <span className="font-[400] text-[14px] ml-5">
                       Humidity: {state?.current?.humidity}%
                     </span>
-                    <span className="font-[400] text-[14px] ml-5">UV: {state?.current?.uv}</span>
+                    <span className="font-[400] text-[14px] ml-5">
+                      UV: {state?.current?.uv}
+                    </span>
                   </div>
                   {/* third */}
                   <div className="mt-3">
-                    <span className="font-[400] text-[14px] ml-2">
-                      Dew point: 23°C
-                    </span>
                     <span className="font-[400] text-[14px] ml-5">
                       Visibility: {state?.current?.vis_km}km
                     </span>
                   </div>
-                 
                 </div>
               </div>
             </div>
@@ -136,25 +142,39 @@ hPa</span>
               </div>
             </div>
           </div>
-         
-         <div>
-         <div className="
+
+          <div>
+            <div
+              className="
                   flex
-                  ">
-                    <div className="
+                  "
+            >
+              <div
+                className="
                     text-[14px]
                     font-[500]
                     ml-[10px]
-                    ">Conclusion:</div>
-                    <div className="
+                    "
+              >
+                Conclusion:
+              </div>
+              <div
+                className="
                     text-[15px]
                     font-[500]
                     ml-[5px]
-                    ">{(humidity < 60 && cloud < 50) ? (
-                      "There is a likelyhood for flood and erosion"
-                    ) : "you're safe"}</div>
-                  </div>
-         </div>
+                    "
+              >
+                {humidity < 60 && cloud < 50
+                  ? "There is a likelyhood for flood and erosion"
+                  : "you're safe"}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <CharAt city={text} />
+          </div>
         </div>
       </div>
     </div>
