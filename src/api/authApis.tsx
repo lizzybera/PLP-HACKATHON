@@ -48,3 +48,25 @@ export const weatherAPI = async (city: any) => {
     console.error(error);
   }
 };
+export const airQualityAPI = async (city: any) => {
+  try {
+    const options = {
+      method: "GET",
+      url: "https://air-quality-by-api-ninjas.p.rapidapi.com/v1/airquality",
+      params: {
+        city: city,
+        state: "Lagos",
+        country: "Nigeria",
+      },
+      headers: {
+        "X-RapidAPI-Key": "7125cb4487mshbd965494bef31d7p153a39jsn9d6da199480f",
+        "X-RapidAPI-Host": "air-quality-by-api-ninjas.p.rapidapi.com",
+      },
+    };
+
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
