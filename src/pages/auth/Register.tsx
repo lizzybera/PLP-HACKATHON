@@ -1,5 +1,3 @@
-/** @format */
-
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 // import { RiTwitterXFill } from "react-icons/ri";
@@ -9,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
 const Register = () => {
   const Schema = yup.object({
     email: yup.string().required().email(),

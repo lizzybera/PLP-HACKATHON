@@ -1,5 +1,3 @@
-/** @format */
-
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../pages/common/Layout";
 import Homescreen from "../pages/Homescreen";

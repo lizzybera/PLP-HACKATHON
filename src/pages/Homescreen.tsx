@@ -1,11 +1,11 @@
-/** @format */
-
-import Hero from "./Hero";
+import Hero2 from "./Hero2";
+// import Pixs from "./Pixs";
 
 const Homescreen = () => {
   return (
     <div>
-      <Hero />
+      <Hero2 />
+      {/* <Pixs/> */}
     </div>
   );
 };
