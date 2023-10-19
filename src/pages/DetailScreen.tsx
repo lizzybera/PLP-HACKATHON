@@ -11,8 +11,7 @@ import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
 import iii from "../assets/5-Figure2-1.png";
 import { useState, useEffect } from "react";
 import { weatherAPI } from "../api/authApis";
-import { CharAt } from "./chart";
-// import AirQuality from "./chart";
+import Header from "./static/Header";
 
 const DetailScreen = () => {
   const dispatch = useDispatch();
@@ -32,10 +31,12 @@ const DetailScreen = () => {
   // }, [state]);
 
   console.log(state);
+  const humidity = state?.current?.humidity;
+  const cloud = state?.current?.cloud;
 
   return (
     // container
-    <div className="w-full h-full bg-[#FFFFFF] flex ">
+    <div className="w-full h-full bg-[#FFFFFF] flex">
       {/* main */}
       <div className="w-full h-full  flex flex-col items-center">
         {/* mini header */}
@@ -56,12 +57,12 @@ const DetailScreen = () => {
             />
           </div>
         </div>
-        <div className="w-[70%] h-full screen320:w-[90%] screen375:w-[90%]">
+        <div className="w-[70%] h-full screen320:w-[90%] screen375:w-[90%] py-8">
           {/* part A */}
           <div className="h-[40%] screen320:flex-col screen375:flex-col  w-full flex justify-between">
             <div className="w-[30%] flex flex-col screen320:w-full screen375:w-full screen375:my-2 pt-[10px]">
               <span className="text-[14px] font-[450] ml-1 text-[red] ">
-                Oct 18, 04:35pm
+                {state?.location?.localtime}
               </span>
               <span className="text-[20px] font-[700] ml-1 mb">
                 {state?.location?.name}, {state?.location?.country}
@@ -75,134 +76,100 @@ const DetailScreen = () => {
                 </div>
                 <span className="text-[14px] font-[700] ml-1">
                   Feels like {state?.current?.feelslike_c}°C.{" "}
-                  {state?.current?.condition.text}. Light breeze
+                  {state?.current?.condition.text}
                 </span>
                 {/* last */}
                 <div className="border-l-[1px] border-[orange]">
                   {/* first */}
-                  <div className="flex items-center ml-1 ">
+                  <div className="flex items-center ml-1 mt-3">
                     <TiWeatherDownpour className="text-[22px] mr-1" />
-                    <span className="font-[400] text-[14px] ">0.13mm</span>
+                    <span className="font-[400] text-[14px] ">
+                      {state?.current?.cloud}%
+                    </span>
                   </div>
-                  <div className="flex items-center ml-1">
+                  <div className="flex items-center ml-1 mt-3">
                     <IoNavigate className="text-[20px] mr-1" />
-                    <span className="font-[400] text-[14px]">1.8m/s SSW</span>
+                    <span className="font-[400] text-[14px]">
+                      {state?.current?.wind_mph}m/h SSW
+                    </span>
                   </div>
                   {/* second */}
-                  <div className="flex items-center ">
+                  <div className="flex items-center mt-3">
                     <div className="flex items-center ml-1">
                       <RiCompassLine className="text-[22px] mr-1" />
-                      <span className="font-[400] text-[14px]">1009hPa</span>
+                      <span className="font-[400] text-[14px]">
+                        {state?.current?.pressure_mb}
+                        hPa
+                      </span>
                     </div>
 
-                    <span className="font-[400] text-[14px] ml-2">
+                    <span className="font-[400] text-[14px] ml-5">
                       Humidity: {state?.current?.humidity}%
                     </span>
-                    <span className="font-[400] text-[14px] ml-2">UV: 1</span>
+                    <span className="font-[400] text-[14px] ml-5">
+                      UV: {state?.current?.uv}
+                    </span>
                   </div>
                   {/* third */}
-                  <div>
+                  <div className="mt-3">
                     <span className="font-[400] text-[14px] ml-2">
                       Dew point: 23°C
                     </span>
-                    <span className="font-[400] text-[14px] ml-2">
-                      Visibility: 10.0km
+                    <span className="font-[400] text-[14px] ml-5">
+                      Visibility: {state?.current?.vis_km}km
                     </span>
                   </div>
                 </div>
               </div>
             </div>
             <div className="w-[60%] bg-white flex justify-center screen320:w-full screen375:w-full items-center">
-              <div className="border w-[450px] h-[180px] rounded shadow-sm flex">
+              <div className="border w-[450px] h-[300px] rounded shadow-sm flex">
                 <img
                   src={i}
                   alt=""
-                  className="w-[50%] h-full rounded-tl rounded-bl object-cover"
+                  className="w-[50%] h-full rounded-tl rounded-bl object-fit"
                 />
                 <div className="w-[50%] h-full rounded-tr rounded-br flex flex-col">
                   <img
                     src={ii}
                     alt=""
-                    className="w-full h-[50%] rounded-tl rounded-bl object-cover"
+                    className="w-full h-[50%] rounded-tl rounded-bl object-fit"
                   />
                   <img
                     src={iii}
                     alt=""
-                    className="w-full h-[50%] rounded-tl rounded-bl object-cover"
+                    className="w-full h-[50%] rounded-tl rounded-bl object-fit"
                   />
                 </div>
               </div>
             </div>
           </div>
-          {/* part B */}
-          <div className="h-[60%]  w-full screen320:flex-col screen375:flex-col  bg-[white] flex pt-[10px]">
-            <div className="w-[55%] h-[350px] screen320:w-full  screen375:w-full ">
-              <p className="text-[18px] font-[700] ml-2 screen320:m-0 screen375:m-0">
-                Hourly forecast
-              </p>
-              <div>
-                <CharAt city={text} />
+
+          <div>
+            <div
+              className="
+                  flex
+                  "
+            >
+              <div
+                className="
+                    text-[14px]
+                    font-[500]
+                    ml-[10px]
+                    "
+              >
+                Conclusion:
               </div>
-            </div>
-            <div className="w-[45%] h-[350px] screen320:w-full screen375:w-full bg-[white]  ">
-              <p className="text-[18px] font-[700] ml-3 screen320:m-0">
-                8-day forecast
-              </p>
-              {/* props */}
-              <div className="flex items-center justify-between w-full screen320:px-0 screen375:px-0 px-[15px] my-[15px] screen320:mx-0 screen375:mx-0">
-                <span className="text-[14px] font-[400]">Wed, Oct 18</span>
-                <div className="flex justify-between items-center">
-                  <LiaCloudSunRainSolid />
-                  <span className="text-[14px] font-[400] w-[75px] text-end">
-                    33 / 22°C
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] w-[80px] ">moderate rain</span>
-                  {toggle ? (
-                    <MdArrowDropDown
-                      className="text-[20px] cursor-pointer"
-                      onClick={() => {
-                        dispatch(toggleFalse());
-                      }}
-                    />
-                  ) : (
-                    <MdOutlineArrowDropUp
-                      className="text-[20px] "
-                      onClick={() => {
-                        dispatch(toggleTrue());
-                      }}
-                    />
-                  )}
-                </div>
-              </div>
-              {/* props */}
-              <div className="flex items-center justify-between w-full screen320:px-0 screen375:px-0 px-[15px] my-[15px] screen320:mx-0 screen375:mx-0">
-                <span className="text-[14px] font-[400]">Thu, Oct 19</span>
-                <div className="flex justify-between items-center">
-                  <LiaCloudSunRainSolid />
-                  <span className="text-[14px] font-[400] w-[75px] text-end">
-                    33 / 22°C
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] w-[80px] ">light rain</span>
-                  {toggle ? (
-                    <MdArrowDropDown
-                      className="text-[20px] cursor-pointer"
-                      onClick={() => {
-                        dispatch(toggleFalse());
-                      }}
-                    />
-                  ) : (
-                    <MdOutlineArrowDropUp
-                      className="text-[20px] "
-                      onClick={() => {
-                        dispatch(toggleTrue());
-                      }}
-                    />
-                  )}
-                </div>
+              <div
+                className="
+                    text-[15px]
+                    font-[500]
+                    ml-[5px]
+                    "
+              >
+                {humidity < 60 && cloud < 50
+                  ? "There is a likelyhood for flood and erosion"
+                  : "you're safe"}
               </div>
             </div>
           </div>
