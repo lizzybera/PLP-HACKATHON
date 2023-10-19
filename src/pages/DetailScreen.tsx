@@ -9,24 +9,49 @@ import { toggleFalse, toggleTrue } from "../mainGlobal/Global";
 import i from "../assets/Solar-radiation-map-of-Nigeria-Data-source-44.png";
 import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
 import iii from "../assets/5-Figure2-1.png";
+import { useState, useEffect } from "react";
+import { weatherAPI } from "../api/authApis";
 
 const DetailScreen = () => {
   const dispatch = useDispatch();
   const toggle = useSelector((state: any) => state.toggle);
+
+  const [text, setText] = useState("");
+  const [state, setState] = useState({});
+
+  const getWheather = () => {
+    weatherAPI(text).then((res: any) => {
+      setState(res);
+    });
+  };
+
+  // useEffect(() => {
+  //   getWheather();
+  // }, [state]);
+
+  console.log(state);
+
   return (
     // container
     <div className="w-full h-full bg-[#FFFFFF] flex ">
       {/* main */}
       <div className="w-full h-full  flex flex-col items-center">
         {/* mini header */}
-        <div className="h-[60px] w-full bg-[#F2F2F2] flex justify-center items-center ">
+        <div className="h-[60px] w-full bg-[#e0d0d0] flex justify-center items-center ">
           <div className="w-[400px] h-[40px] screen375:h-[35px] screen320:h-[30px] screen375:w-[350px] screen320:w-[250px] border rounded bg-[#ebe5e5]  flex items-center">
             <input
               placeholder="Enter the city name...."
               type="text"
+              value={text}
+              onChange={(e: any) => {
+                setText(e.target.value);
+              }}
               className=" w-[90%] h-full outline-none border-none rounded pl-[5px]"
             />
-            <FiSearch className="text-[25px]  ml-[5px] max-m" />
+            <FiSearch
+              className="text-[25px]  ml-[5px] max-m"
+              onClick={getWheather}
+            />
           </div>
         </div>
         <div className="w-[70%] h-full screen320:w-[90%] screen375:w-[90%]">
@@ -40,10 +65,13 @@ const DetailScreen = () => {
               <div>
                 <div className="flex items-center">
                   <TiWeatherShower className="text-[30px] ml-1" />
-                  <span className="text-[36px] font-[100]">31°C</span>
+                  <span className="text-[36px] font-[100]">
+                    {state?.current?.temp_c}°C
+                  </span>
                 </div>
                 <span className="text-[14px] font-[700] ml-1">
-                  Feels like 36°C. Light rain. Light breeze
+                  Feels like {state?.current?.feelslike_c}°C.{" "}
+                  {state?.current?.condition.text}. Light breeze
                 </span>
                 {/* last */}
                 <div className="border-l-[1px] border-[orange]">
