@@ -10,10 +10,15 @@ import * as yup from "yup";
 import { signIn, verify } from "../../api/authApis";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode"
+import { useDispatch, useSelector } from "react-redux";
+import { createUser } from "../../mainGlobal/Global";
 
 const Login = () => {
   const {token} = useParams()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const user = useSelector((state : any) => state.user)
+
   const Schema = yup.object({
     email: yup.string().required().email(),
     password: yup.string().required(),
@@ -28,8 +33,10 @@ const Login = () => {
   const onSubmit = handleSubmit(async (data: any) => {
     const {email, password} = data
     signIn({email, password}).then((res)=>{
+      dispatch(createUser(res))
       navigate("/")
       console.log(res);
+      console.log("user", user);
       
     })
   });
