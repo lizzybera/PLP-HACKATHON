@@ -6,6 +6,7 @@ import Homescreen from "../pages/Homescreen";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
 import DetailScreen from "../pages/DetailScreen";
+import Detail from "../pages/Detail";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -15,11 +16,6 @@ export const mainRouter = createBrowserRouter([
       {
         index: true,
         element: <Homescreen />,
-      },
-      {
-        index: true,
-        path: "/detail",
-        element: <DetailScreen />,
       },
     ],
   },
