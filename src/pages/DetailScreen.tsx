@@ -32,7 +32,7 @@ const DetailScreen = () => {
         <div className="w-[70%] h-full screen320:w-[90%] screen375:w-[90%]">
           {/* part A */}
           <div className="h-[40%] screen320:flex-col screen375:flex-col  w-full flex justify-between">
-            <div className="w-[30%] flex flex-col screen320:w-full screen375:w-full screen375:my-2">
+            <div className="w-[30%] flex flex-col screen320:w-full screen375:w-full screen375:my-2 pt-[10px]">
               <span className="text-[14px] font-[450] ml-1 text-[red] ">
                 Oct 18, 04:35pm
               </span>
@@ -109,7 +109,7 @@ const DetailScreen = () => {
                 Hourly forecast
               </p>
             </div>
-            <div className="w-[45%] h-[350px] screen320:w-full screen375:w-full bg-[silver]  ">
+            <div className="w-[45%] h-[350px] screen320:w-full screen375:w-full bg-[white]  ">
               <p className="text-[18px] font-[700] ml-3 screen320:m-0">
                 8-day forecast
               </p>
