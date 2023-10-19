@@ -30,12 +30,14 @@ const Comp2 = () => {
         min-h-[240px]
         flex
         items-center
-    screen320:flex-wrap
-    justify-around
+        screen768:flex-wrap
+        screen320:flex-wrap
+        justify-around
         ">
           <UniversalCard 
           icon={<TiWeatherWindyCloudy className="
           text-[35px]
+          screen768:mb-[10px]
           mt-[15px]
           "/>}
           title="Real-Time, History, Forecast"
