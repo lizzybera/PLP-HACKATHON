@@ -31,3 +31,20 @@ export const verify = async (token: any) => {
     console.log(error);
   }
 };
+export const weatherAPI = async (city: any) => {
+  try {
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/current.json",
+      params: { q: city },
+      headers: {
+        "X-RapidAPI-Key": "7125cb4487mshbd965494bef31d7p153a39jsn9d6da199480f",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
