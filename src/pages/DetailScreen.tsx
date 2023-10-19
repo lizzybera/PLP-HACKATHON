@@ -11,8 +11,8 @@ import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
 import iii from "../assets/5-Figure2-1.png";
 import { useState, useEffect } from "react";
 import { weatherAPI } from "../api/authApis";
-import Header from "./static/Header";
 
+// gggghhnbniuy
 const DetailScreen = () => {
   const dispatch = useDispatch();
   const toggle = useSelector((state: any) => state.toggle);
