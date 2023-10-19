@@ -1,4 +1,3 @@
-/** @format */
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 // import { RiTwitterXFill } from "react-icons/ri";
