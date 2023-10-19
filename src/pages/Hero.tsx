@@ -1,5 +1,3 @@
-/** @format */
-
 import bg from "../assets/mountains.svg";
 import Header from "./static/Header";
 import { GiTrophyCup } from "react-icons/gi";
