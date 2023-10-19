@@ -4,6 +4,7 @@ import pic1 from "../assets/weather_icon_cloud_slight_rain.svg"
 import pic3 from "../assets/weather_icon_full_clouds.svg"
 import pic5 from "../assets/weather_icon_partly_cloudy.svg"
 import pic4 from "../assets/weather_icon_sun_rain_clouds.svg"
+import { Link } from "react-router-dom";
 const Hero2 = () => {
   return (
     <>
@@ -37,9 +38,11 @@ const Hero2 = () => {
                   </span>
                 </div>
                 <div className="flex items-center justify-center screen425:mb-3">
+                  <Link to="/detail">
                   <div className="px-5 cursor-pointer py-3 rounded-md text-white bg-[#F47E45] font-bold mt-4 screen425:my-2 ">
                     START USING THE API
                   </div>
+                  </Link>
                   <span className="ml-3">— It's free!</span>
                 </div>
               </div>
