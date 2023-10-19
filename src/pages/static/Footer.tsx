@@ -30,10 +30,10 @@ const Footer = () => {
     min-h-[50%]
     flex
     justify-between
-    medium:flex-wrap
+    screen768:flex-wrap
     ">
       <div className="
-      medium:hidden
+      screen768::hidden
       ">
         <div className="
         flex
@@ -117,7 +117,7 @@ const Footer = () => {
       />
     </div>
     <div className="
-    hidden medium:flex flex-col mt-[5px] small:mt-[30px] mb-[30px] 
+    hidden screen768:flex flex-col mt-[5px] screen375::mt-[30px] mb-[30px] 
     ">
         <div className="
         flex
@@ -126,14 +126,14 @@ const Footer = () => {
           <GiTripleCorn className="
           text-[#698899]
           text-[40px]
-          small:text-[30px]
+          screen375:text-[30px]
           "/>
           <div className="
           text-[30px]
           text-[#698899]
           ml-[5px]
           font-[500]
-          small:text-[25px] small:font-[700]
+          screen375::text-[25px] screen375::font-[700]
           ">ECO~DATA</div>
         </div>
         <div className="
@@ -142,30 +142,30 @@ const Footer = () => {
         text-[25px]
         w-[180px]
         justify-around
-        small:text-[19px]
+        screen375::text-[19px]
         ">
           <BsGithub/>
           <div className="
           w-[25px]
           h-[25px]
-          small:h-[20px]
-          small:w-[20px]
+          screen375::h-[20px]
+          screen375::w-[20px]
           ">
           <img src={img3}/>
           </div>
           <div className="
           w-[25px]
           h-[25px]
-          small:h-[20px]
-          small:w-[20px]
+          screen375::h-[20px]
+          screen375::w-[20px]
           ">
           <img src={img4}/>
           </div>
           <div className="
           w-[23px]
           h-[23px]
-          small:h-[20px]
-          small:w-[20px]
+          screen375::h-[20px]
+          screen375::w-[20px]
           ">
           <img src={img2}/>
           </div>
@@ -175,8 +175,8 @@ const Footer = () => {
           <div className="
           w-[25px]
           h-[25px]
-          small:h-[20px]
-          small:w-[20px]
+          screen375::h-[20px]
+          screen375::w-[20px]
           ">
           <img src={img1}/>
           </div>
@@ -189,13 +189,13 @@ const Footer = () => {
     flex-col
     justify-center
     items-center
-    small:text-center
+    screen375::text-center
     ">
       <div className="
       mb-[10px]
       text-[16px]
       text-white
-      small:text-[15px ]
+      screen375::text-[15px ]
       ">Imprint / Legal | Privacy | Terms | Cookie Preference | Sitemap</div>
       <div className="
       mb-[10px]
