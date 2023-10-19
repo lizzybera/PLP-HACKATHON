@@ -109,7 +109,7 @@ const DetailScreen = () => {
                 Hourly forecast
               </p>
             </div>
-            <div className="w-[45%] h-[350px] screen320:w-full screen375:w-full bg-[silver]  ">
+            <div className="w-[45%] h-[350px] screen320:w-full screen375:w-full bg-[white]  ">
               <p className="text-[18px] font-[700] ml-3 screen320:m-0">
                 8-day forecast
               </p>
