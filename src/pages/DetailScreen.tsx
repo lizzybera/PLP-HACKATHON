@@ -1,10 +1,14 @@
 import { FiSearch } from "react-icons/fi";
 import { RiCompassLine } from "react-icons/ri";
+import { LiaCloudSunRainSolid } from "react-icons/lia";
 import { TiWeatherShower, TiWeatherDownpour } from "react-icons/ti";
 import { IoNavigate } from "react-icons/io5";
 import { MdArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-// import { toggleFalse, toggleTrue } from "../mainGlobal/Global";
+import { toggleFalse, toggleTrue } from "../mainGlobal/Global";
+import i from "../assets/Solar-radiation-map-of-Nigeria-Data-source-44.png";
+import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
+import iii from "../assets/5-Figure2-1.png";
 
 const DetailScreen = () => {
   const dispatch = useDispatch();
@@ -16,7 +20,7 @@ const DetailScreen = () => {
       <div className="w-full h-full  flex flex-col items-center">
         {/* mini header */}
         <div className="h-[60px] w-full bg-[#F2F2F2] flex justify-center items-center ">
-          <div className="w-[400px] h-[40px] border rounded bg-[#ebe5e5]  flex items-center">
+          <div className="w-[400px] h-[40px] screen375:h-[35px] screen320:h-[30px] screen375:w-[350px] screen320:w-[250px] border rounded bg-[#ebe5e5]  flex items-center">
             <input
               placeholder="Enter the city name...."
               type="text"
@@ -25,11 +29,11 @@ const DetailScreen = () => {
             <FiSearch className="text-[25px]  ml-[5px] max-m" />
           </div>
         </div>
-        <div className="w-[70%] h-[600px] ">
+        <div className="w-[70%] h-full screen320:w-[90%] screen375:w-[90%]">
           {/* part A */}
-          <div className="h-[40%] w-full flex justify-between">
-            <div className="w-[30%] flex flex-col">
-              <span className="text-[14px] font-[400] ml-1">
+          <div className="h-[40%] screen320:flex-col screen375:flex-col  w-full flex justify-between">
+            <div className="w-[30%] flex flex-col screen320:w-full screen375:w-full screen375:my-2">
+              <span className="text-[14px] font-[450] ml-1 text-[red] ">
                 Oct 18, 04:35pm
               </span>
               <span className="text-[24px] font-[700] ml-1 mb">Ifo, NG</span>
@@ -76,22 +80,44 @@ const DetailScreen = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[60%] bg-white flex justify-center items-center">
-              <div className="border w-[450px] h-[180px] rounded shadow-sm"></div>
+            <div className="w-[60%] bg-white flex justify-center screen320:w-full screen375:w-full items-center">
+              <div className="border w-[450px] h-[180px] rounded shadow-sm flex">
+                <img
+                  src={i}
+                  alt=""
+                  className="w-[50%] h-full rounded-tl rounded-bl object-cover"
+                />
+                <div className="w-[50%] h-full rounded-tr rounded-br flex flex-col">
+                  <img
+                    src={ii}
+                    alt=""
+                    className="w-full h-[50%] rounded-tl rounded-bl object-cover"
+                  />
+                  <img
+                    src={iii}
+                    alt=""
+                    className="w-full h-[50%] rounded-tl rounded-bl object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           {/* part B */}
-          <div className="h-[60%] w-full  bg-[white] flex pt-[10px]">
-            <div className="w-[55%] h-full    ">
-              <p className="text-[18px] font-[700] ml-2">Hourly forecast</p>
+          <div className="h-[60%]  w-full screen320:flex-col screen375:flex-col  bg-[white] flex pt-[10px]">
+            <div className="w-[55%] h-[350px] screen320:w-full  screen375:w-full ">
+              <p className="text-[18px] font-[700] ml-2 screen320:m-0 screen375:m-0">
+                Hourly forecast
+              </p>
             </div>
-            <div className="w-[45%] h-full  bg-[silver]  ">
-              <p className="text-[18px] font-[700] ml-3">8-day forecast</p>
+            <div className="w-[45%] h-[350px] screen320:w-full screen375:w-full bg-[silver]  ">
+              <p className="text-[18px] font-[700] ml-3 screen320:m-0">
+                8-day forecast
+              </p>
               {/* props */}
-              <div className="flex items-center justify-between w-full px-[15px] my-[15px] ">
+              <div className="flex items-center justify-between w-full screen320:px-0 screen375:px-0 px-[15px] my-[15px] screen320:mx-0 screen375:mx-0">
                 <span className="text-[14px] font-[400]">Wed, Oct 18</span>
                 <div className="flex justify-between items-center">
-                  <IoNavigate />
+                  <LiaCloudSunRainSolid />
                   <span className="text-[14px] font-[400] w-[75px] text-end">
                     33 / 22°C
                   </span>
@@ -100,35 +126,47 @@ const DetailScreen = () => {
                   <span className="text-[10px] w-[80px] ">moderate rain</span>
                   {toggle ? (
                     <MdArrowDropDown
-                      className="text-[20px] "
+                      className="text-[20px] cursor-pointer"
                       onClick={() => {
-                        // dispatch(toggleTrue());
-                        // console.log(dispatch);
+                        dispatch(toggleFalse());
                       }}
                     />
                   ) : (
                     <MdOutlineArrowDropUp
                       className="text-[20px] "
                       onClick={() => {
-                        // dispatch(toggleFalse());
-                        // console.log(dispatch);
+                        dispatch(toggleTrue());
                       }}
                     />
                   )}
                 </div>
               </div>
               {/* props */}
-              <div className="flex items-center justify-between w-full px-[15px] my-[15px]">
-                <span className="text-[14px] font-[400]">Thur, Oct 19</span>
+              <div className="flex items-center justify-between w-full screen320:px-0 screen375:px-0 px-[15px] my-[15px] screen320:mx-0 screen375:mx-0">
+                <span className="text-[14px] font-[400]">Thu, Oct 19</span>
                 <div className="flex justify-between items-center">
-                  <IoNavigate />
+                  <LiaCloudSunRainSolid />
                   <span className="text-[14px] font-[400] w-[75px] text-end">
                     33 / 22°C
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] w-[80px] ">moderate rain</span>
-                  <MdArrowDropDown className="text-[20px] " />
+                  <span className="text-[10px] w-[80px] ">light rain</span>
+                  {toggle ? (
+                    <MdArrowDropDown
+                      className="text-[20px] cursor-pointer"
+                      onClick={() => {
+                        dispatch(toggleFalse());
+                      }}
+                    />
+                  ) : (
+                    <MdOutlineArrowDropUp
+                      className="text-[20px] "
+                      onClick={() => {
+                        dispatch(toggleTrue());
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
