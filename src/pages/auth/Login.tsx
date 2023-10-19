@@ -3,12 +3,17 @@ import { SiFacebook } from "react-icons/si";
 // import { RiTwitterXFill } from "react-icons/ri";
 // import { BsLinkedin } from "react-icons/bs";
 import imgs from "../../assets/undraw_weather_re_qsmd (1).svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { signIn, verify } from "../../api/authApis";
+import { useEffect } from "react";
+import jwtDecode from "jwt-decode"
 
 const Login = () => {
+  const {token} = useParams()
+  const navigate = useNavigate()
   const Schema = yup.object({
     email: yup.string().required().email(),
     password: yup.string().required(),
@@ -21,8 +26,25 @@ const Login = () => {
     resolver: yupResolver(Schema),
   });
   const onSubmit = handleSubmit(async (data: any) => {
-    console.log(data);
+    const {email, password} = data
+    signIn({email, password}).then((res)=>{
+      navigate("/")
+      console.log(res);
+      
+    })
   });
+
+  
+  useEffect(() => {
+    console.log(token)
+  if(token){
+    const data : any = jwtDecode(token)
+    verify(token)
+    console.log(data?.id);
+    
+  }
+  }, [])
+
   return (
     <div className="w-full h-[100vh] bg-slate-200 rounded-lg flex items-center justify-center max-sm:flex-col">
       <div className="w-[699px] h-[661px]  flex items-center justify-center max-md:hidden">

@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const url: string = "http://localhost:3030/api";
+const url: string = "https://plp-be.onrender.com/api";
 
-export const register = async (data: any) => {
+export const create = async (data: any) => {
   try {
     return axios.post(`${url}/register`, data).then((res: any) => {
       return res.data.data;
@@ -22,9 +22,9 @@ export const signIn = async (data: any) => {
   }
 };
 
-export const verify = async (data: any) => {
+export const verify = async (token: any) => {
   try {
-    return axios.post(`${url}/verify`, data).then((res: any) => {
+    return axios.get(`${url}/${token}/verify`).then((res: any) => {
       return res.data.data;
     });
   } catch (error) {

@@ -3,14 +3,17 @@ import { SiFacebook } from "react-icons/si";
 // import { RiTwitterXFill } from "react-icons/ri";
 // import { BsLinkedin } from "react-icons/bs";
 import imgs from "../../assets/undraw_weather_re_qsmd (1).svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { create } from "../../api/authApis";
 
 const Register = () => {
+  const navigate = useNavigate()
   const Schema = yup.object({
-    email: yup.string().required().email(),
+    name: yup.string().required(),
+    email: yup.string().email().required(),
     password: yup.string().required(),
   });
 
@@ -22,7 +25,12 @@ const Register = () => {
     resolver: yupResolver(Schema),
   });
   const onSubmit = handleSubmit(async (data: any) => {
-    console.log(data);
+    const {email, password, name} = data
+    create({email, password, name}).then((res)=>{
+      navigate("/sign-in")
+      console.log(res);
+      
+    })
   });
 
   return (
@@ -46,6 +54,19 @@ const Register = () => {
         </div>
         <form className="flex items-center justify-center flex-col mt-7">
           <span className="text-[20px] font-bold">Reigster your account</span>
+          <div className="mt-5 pl-5 w-full">
+            <span className="text-[20px] font-bold ">Name</span>
+            <input
+              type="text"
+              placeholder="Enter your Name"
+              className="outline-none w-[90%] h-[40px] bg-white border-[#004AAD] border pl-4 rounded-md mr-8"
+              required
+              {...register("name")}
+            />
+            <span className="text-[red] flex items-center justify-end">
+              {errors?.name?.message}
+            </span>
+          </div>
           <div className="mt-5 pl-5 w-full">
             <span className="text-[20px] font-bold ">E-mail</span>
             <input

@@ -1,26 +1,28 @@
-import bg from "../assets/mountains.svg";
 import Header from "./static/Header";
 import { GiTrophyCup } from "react-icons/gi";
+import pic1 from "../assets/weather_icon_cloud_slight_rain.svg"
+import pic3 from "../assets/weather_icon_full_clouds.svg"
+import pic5 from "../assets/weather_icon_partly_cloudy.svg"
+import pic4 from "../assets/weather_icon_sun_rain_clouds.svg"
 const Hero2 = () => {
   return (
     <>
       <div
-        className="w-[100%] h-[90vh] "
+        className="w-[100%] h-[90vh] hello "
         style={{
-          backgroundImage: `url(${bg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center"
         }}
+        
       >
         <div
           className="w-[100%] h-[90vh] "
-          style={{ backgroundColor: "rgba(45, 88, 112, 0.4)" }}
         >
           <Header />
-          <div className="w-[100%] h-[200px]  flex items-center justify-center">
+          <div className="w-[100%] h-[200px]  flex items-center justify-center ">
             <div className="w-[85%] h-[200px]  flex items-center justify-between">
-              <div className="text-white flex items-center justify-center flex-col mt-[300px]">
+              <div className="text-white flex items-center justify-center flex-col  mt-[300px]">
                 <span className=" text-[30px] font-bold ">
                   Real-Time & Historical <br /> World Weather Data API
                 </span>
@@ -41,14 +43,53 @@ const Hero2 = () => {
                   <span className="ml-3">— It's free!</span>
                 </div>
               </div>
-              <div className="w-[450px] h-[400px] border-[2px] mt-[300px] border-[#5F8094] ml-[20px] flex-col grid grid-rows-1fr grid-cols-1 ">
-                <div className="border flex items-center justify-center">kkkkkkkkkk</div>
-                <div className="grid grid-rows-3 gap-3">
-                    <div>a</div>
-                    <div>b</div>
-                    <div>c</div>
+              <div className="w-[460px] h-[400px] border-[5px] mt-[300px] bg-[#16394C] rounded-lg border-[#5F8094] ml-[20px] flex flex-col justify-between py-5 px-10">
+                <div className="flex items-center justify-center text-white text-[20px] font-bold">Makoko, Lagos, Nigeria</div>
+                <div className="flex w-[100%]  justify-between">
+                  <div>
+                    <img src={pic4} alt="Loading..." className="h-[100px]"/>
+                    <span className="ml-3 font-[600] text-white">Light Drizzle</span>
+                     </div>
+                  <div className="text-white mt-12 text-[25px] font-bold">28°c</div>
+                  <div className="text-white mt-12">
+                    <div>Wind: 12 kmph</div>
+                    <div>Precip: 0 mm</div>
+                    <div>Pressure: 1014 mb</div>
+                    </div>
                 </div>
-                <div>kkkkkkkkkk</div>
+
+                <div className="w-full flex items-center justify-between text-white">
+                  
+                  <div className="">
+                    <span className="font-[700]">Mon</span>
+                    <img src={pic5} alt="Loading..." />
+                    <p>27°c</p>
+                  </div>
+
+                  <div className="">
+                    <span className="font-[700]">Mon</span>
+                    <img src={pic1} alt="Loading..." />
+                    <p>27°c</p>
+                  </div>
+
+                  <div className="">
+                    <span className="font-[700]">Mon</span>
+                    <img src={pic3} alt="Loading..." />
+                    <p>27°c</p>
+                  </div>
+
+                  <div className="">
+                    <span className="font-[700]">Mon</span>
+                    <img src={pic1} alt="Loading..." />
+                    <p>27°c</p>
+                  </div>
+
+                  <div className="">
+                    <span className="font-[700]">Mon</span>
+                    <img src={pic1} alt="Loading..." />
+                    <p>27°c</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
