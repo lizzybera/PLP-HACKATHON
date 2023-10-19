@@ -40,14 +40,12 @@ export const CharAt: FC<iCity> = ({ city }) => {
     },
   };
 
-  let PM = "";
 
-  const labels = [
+  const labels : any = [
     "CO2",
     "NO2",
     "O3",
     "SO2",
-    (PM = "PM2.5"),
     "PM10",
     "Overall_AQI",
   ];
@@ -56,7 +54,6 @@ export const CharAt: FC<iCity> = ({ city }) => {
     state?.NO2?.aqi,
     state?.O3?.aqi,
     state?.SO2?.aqi,
-    state?.PM?.aqi,
     state?.PM10?.aqi,
     state?.overall_aqi,
   ];
@@ -65,7 +62,6 @@ export const CharAt: FC<iCity> = ({ city }) => {
     state?.NO2?.concentration,
     state?.O3?.concentration,
     state?.SO2?.concentration,
-    state?.PM?.concentration,
     state?.PM10?.concentration,
   ];
   // const database = [7, 2, 33, 0, 54, 21, 54];

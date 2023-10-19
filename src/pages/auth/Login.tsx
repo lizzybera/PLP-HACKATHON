@@ -1,5 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
-import { SiFacebook } from "react-icons/si";
 // import { RiTwitterXFill } from "react-icons/ri";
 // import { BsLinkedin } from "react-icons/bs";
 import imgs from "../../assets/undraw_weather_re_qsmd (1).svg";
@@ -19,6 +17,8 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const user = useSelector((state : any) => state.user)
+  console.log(user);
+  
 
   const Schema = yup.object({
     email: yup.string().required().email(),

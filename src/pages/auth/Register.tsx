@@ -1,7 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
-import { SiFacebook } from "react-icons/si";
-// import { RiTwitterXFill } from "react-icons/ri";
-// import { BsLinkedin } from "react-icons/bs";
 import imgs from "../../assets/undraw_weather_re_qsmd (1).svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";

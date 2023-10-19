@@ -1,25 +1,19 @@
 import { FiSearch } from "react-icons/fi";
 import { RiCompassLine } from "react-icons/ri";
-import { LiaCloudSunRainSolid } from "react-icons/lia";
 import { TiWeatherShower, TiWeatherDownpour } from "react-icons/ti";
 import { IoNavigate } from "react-icons/io5";
-import { MdArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleFalse, toggleTrue } from "../mainGlobal/Global";
 import i from "../assets/Solar-radiation-map-of-Nigeria-Data-source-44.png";
 import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
 import iii from "../assets/5-Figure2-1.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { weatherAPI } from "../api/authApis";
 import { CharAt } from "./chart";
 
 // gggghhnbniuy
 const DetailScreen = () => {
-  const dispatch = useDispatch();
-  const toggle = useSelector((state: any) => state.toggle);
 
   const [text, setText] = useState("");
-  const [state, setState] = useState({});
+  const [state, setState] = useState<any>();
 
   const getWheather = () => {
     weatherAPI(text).then((res: any) => {

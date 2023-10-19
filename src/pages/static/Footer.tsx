@@ -36,7 +36,6 @@ const Footer = () => {
           min-h-[50%]
           flex
           justify-between
-          screen425:bg-[red]
     screen768:flex-wrap
     screen375:mb-[10px]
     screen425:mb-[10px]
