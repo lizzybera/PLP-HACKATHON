@@ -11,6 +11,7 @@ import ii from "../assets/Connectivity-in-Nigeria-no-title-1.png";
 import iii from "../assets/5-Figure2-1.png";
 import { useState, useEffect } from "react";
 import { weatherAPI } from "../api/authApis";
+import { CharAt } from "./chart";
 
 // gggghhnbniuy
 const DetailScreen = () => {
@@ -112,9 +113,6 @@ const DetailScreen = () => {
                   </div>
                   {/* third */}
                   <div className="mt-3">
-                    <span className="font-[400] text-[14px] ml-2">
-                      Dew point: 23°C
-                    </span>
                     <span className="font-[400] text-[14px] ml-5">
                       Visibility: {state?.current?.vis_km}km
                     </span>
@@ -172,6 +170,10 @@ const DetailScreen = () => {
                   : "you're safe"}
               </div>
             </div>
+          </div>
+
+          <div>
+            <CharAt city={text} />
           </div>
         </div>
       </div>

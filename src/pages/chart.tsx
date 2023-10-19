@@ -68,6 +68,9 @@ export const CharAt: FC<iCity> = ({ city }) => {
     state?.PM?.concentration,
     state?.PM10?.concentration,
   ];
+  // const database = [7, 2, 33, 0, 54, 21, 54];
+  // const database2 = [667.57, 1.63, 39.34, 0.62, 17.59, 23.55];
+
   const data = {
     labels,
     datasets: [
