@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { create } from "../../api/authApis";
+import Swal from "sweetalert2"
 
 const Register = () => {
   const navigate = useNavigate()
@@ -27,19 +28,37 @@ const Register = () => {
   const onSubmit = handleSubmit(async (data: any) => {
     const {email, password, name} = data
     create({email, password, name}).then((res)=>{
-      navigate("/sign-in")
-      console.log(res);
+      if(res){
+        Swal.fire({
+            icon : 'success',
+            title: `Registered Successfully` ,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+              }
+          })
+          navigate("/sign-in")
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!, un-able to Register',
+      })
+      navigate("/register")
+    }
       
     })
   });
 
   return (
-    <div className="w-full h-[100vh] bg-slate-200 rounded-lg flex items-center justify-center max-sm:flex-col">
-      <div className="w-[699px] h-[661px]  flex items-center justify-center max-md:hidden">
-        <img src={imgs} alt="loading..." className="h-[300px]" />
+    <div className="w-full min-h-[100vh] bg-slate-200 rounded-lg flex items-center justify-center screen425:flex-wrap">
+      <div className="w-[699px] h-[600px]  flex items-center justify-center screen425:h-[370px]  screen768:w-[400px] ">
+        <img src={imgs} alt="loading..." className="h-[270px] screen425:h-[150px] screen768:h-[180px] screen768:ml-5 " />
       </div>
       <div
-        className="w-[350px] h-[550px] bg-white rounded-xl mr-3"
+        className="w-[350px] h-[500px] bg-white  rounded-xl mr-3 screen425:mb-5 screen425:ml-3"
         onSubmit={onSubmit}
       >
         <div className="flex items-center justify-end mt-5">
@@ -55,7 +74,7 @@ const Register = () => {
         <form className="flex items-center justify-center flex-col mt-7">
           <span className="text-[20px] font-bold">Reigster your account</span>
           <div className="mt-5 pl-5 w-full">
-            <span className="text-[20px] font-bold ">Name</span>
+            <span className="text-[20px] font-bold screen425:text-[14px] ">Name</span>
             <input
               type="text"
               placeholder="Enter your Name"
@@ -68,7 +87,7 @@ const Register = () => {
             </span>
           </div>
           <div className="mt-5 pl-5 w-full">
-            <span className="text-[20px] font-bold ">E-mail</span>
+            <span className="text-[20px] font-bold screen425:text-[14px] ">E-mail</span>
             <input
               type="text"
               placeholder="Enter your E-mail"
@@ -81,7 +100,7 @@ const Register = () => {
             </span>
           </div>
           <div className="mt-5 pl-5 w-full">
-            <span className="text-[20px] font-bold pl-3">Password</span>
+            <span className="text-[20px] font-bold  screen425:text-[14px]">Password</span>
             <input
               type="text"
               placeholder="Enter your Password"
@@ -94,28 +113,12 @@ const Register = () => {
             </span>
           </div>
           <button
-            className=" px-5 py-3 flex items-center justify-center bg-[#004AAD] rounded-3xl  font-bold text-white  mt-5"
+            className=" px-5 py-3 flex items-center justify-center bg-[#004AAD] rounded-3xl  font-bold text-white  mt-9 mr-3 screen425:text-[14px] screen425:px-[125px]  screen425:rounded-[10px] screen768:py-[10px] screen768:px-[40px] "
             type="submit"
           >
             Sign up
           </button>
-          <div className="flex mt-5 items-center justify-between">
-            <span className="mr-4 text-[20px] font-bold">
-              Create account with
-            </span>
-            <p className="w-[50px] h-[50px] rounded-full border flex items-center justify-center mr-3">
-              <FcGoogle size={30} />
-            </p>
-            <p className="w-[50px] h-[50px] rounded-full border flex items-center justify-center">
-              <SiFacebook size={30} style={{ color: "blue" }} />
-            </p>
-            {/* { <p className="w-[50px] h-[50px] rounded-full border flex items-center justify-center ml-3">
-              <BsLinkedin size={30} style={{ color: "blue" }} />
-            </p> */}
-            {/* <p className="w-[50px] h-[50px] rounded-full border flex items-center justify-center ml-6">
-              <RiTwitterXFill size={30} />
-            </p> */}
-          </div>
+         
         </form>
       </div>
     </div>
