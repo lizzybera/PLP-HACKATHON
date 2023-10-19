@@ -4,7 +4,7 @@ import { TiWeatherShower, TiWeatherDownpour } from "react-icons/ti";
 import { IoNavigate } from "react-icons/io5";
 import { MdArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleFalse, toggleTrue } from "../mainGlobal/Global";
+// import { toggleFalse, toggleTrue } from "../mainGlobal/Global";
 
 const DetailScreen = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const DetailScreen = () => {
               type="text"
               className=" w-[90%] h-full outline-none border-none rounded pl-[5px]"
             />
-            <FiSearch className="text-[25px]  ml-[5px]" />
+            <FiSearch className="text-[25px]  ml-[5px] max-m" />
           </div>
         </div>
         <div className="w-[70%] h-[600px] ">
@@ -102,16 +102,16 @@ const DetailScreen = () => {
                     <MdArrowDropDown
                       className="text-[20px] "
                       onClick={() => {
-                        dispatch(toggleTrue());
-                        console.log(dispatch);
+                        // dispatch(toggleTrue());
+                        // console.log(dispatch);
                       }}
                     />
                   ) : (
                     <MdOutlineArrowDropUp
                       className="text-[20px] "
                       onClick={() => {
-                        dispatch(toggleFalse());
-                        console.log(dispatch);
+                        // dispatch(toggleFalse());
+                        // console.log(dispatch);
                       }}
                     />
                   )}
