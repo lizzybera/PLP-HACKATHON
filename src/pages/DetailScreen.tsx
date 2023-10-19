@@ -61,7 +61,7 @@ const DetailScreen = () => {
               <span className="text-[14px] font-[450] ml-1 text-[red] ">
                 Oct 18, 04:35pm
               </span>
-              <span className="text-[24px] font-[700] ml-1 mb">Ifo, NG</span>
+              <span className="text-[20px] font-[700] ml-1 mb">{state?.location?.name}, {state?.location?.country}</span>
               <div>
                 <div className="flex items-center">
                   <TiWeatherShower className="text-[30px] ml-1" />
@@ -92,7 +92,7 @@ const DetailScreen = () => {
                     </div>
 
                     <span className="font-[400] text-[14px] ml-2">
-                      Humidity: 60%
+                      Humidity: {state?.current?.humidity}%
                     </span>
                     <span className="font-[400] text-[14px] ml-2">UV: 1</span>
                   </div>
