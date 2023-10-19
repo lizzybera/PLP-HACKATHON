@@ -5,7 +5,7 @@ const initialState = {
   toggle: false,
 };
 
-const GlobalState = createSlice({
+const GlobalState: any = createSlice({
   name: "state",
   initialState,
   reducers: {
