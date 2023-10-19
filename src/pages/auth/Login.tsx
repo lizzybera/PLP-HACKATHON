@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import jwtDecode from "jwt-decode"
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../mainGlobal/Global";
+import Swal from "sweetalert2"
 
 const Login = () => {
   const {token} = useParams()
@@ -33,10 +34,29 @@ const Login = () => {
   const onSubmit = handleSubmit(async (data: any) => {
     const {email, password} = data
     signIn({email, password}).then((res)=>{
-      dispatch(createUser(res))
-      navigate("/")
-      console.log(res);
-      console.log("user", user);
+      console.log("res",res);
+      
+      if(res){
+        Swal.fire({
+          icon : 'success',
+          title: `Welcome` ,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+        dispatch(createUser(res))
+          navigate("/")
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!, un-able to sign-in',
+        })
+        navigate("/register")
+      }
       
     })
   });
@@ -53,12 +73,12 @@ const Login = () => {
   }, [])
 
   return (
-    <div className="w-full h-[100vh] bg-slate-200 rounded-lg flex items-center justify-center max-sm:flex-col">
-      <div className="w-[699px] h-[661px]  flex items-center justify-center max-md:hidden">
-        <img src={imgs} alt="loading..." className="h-[300px]" />
+    <div className="w-full h-[100vh] bg-slate-200 rounded-lg flex items-center justify-center screen425:flex-wrap">
+      <div className="w-[699px] h-[661px]  flex items-center justify-center screen425:h-[370px]  screen768:w-[400px]">
+        <img src={imgs} alt="loading..." className="h-[300px] screen425:h-[150px] screen768:h-[180px] screen768:ml-5 " />
       </div>
       <div
-        className="w-[350px] h-[550px] bg-white rounded-xl mr-3"
+        className="w-[350px] h-[550px] bg-white rounded-xl mr-3 screen425:mb-5 screen425:ml-3"
         onSubmit={onSubmit}
       >
         <div className="flex items-center justify-end mt-5">
@@ -76,7 +96,7 @@ const Login = () => {
             Welcome back to your account
           </span>
           <div className="mt-5 pl-5 w-full">
-            <span className="text-[20px] font-bold ">E-mail</span>
+            <span className="text-[20px] font-bold screen425:text-[14px]">E-mail</span>
             <input
               type="text"
               placeholder="Enter your E-mail"
@@ -89,7 +109,7 @@ const Login = () => {
             </span>
           </div>
           <div className="mt-5 pl-5 w-full">
-            <span className="text-[20px] font-bold pl-3">Password</span>
+            <span className="text-[20px] font-bold pl-3 screen425:text-[14px]">Password</span>
             <input
               type="text"
               placeholder="Enter your Password"
@@ -102,22 +122,12 @@ const Login = () => {
             </span>
           </div>
           <button
-            className=" px-5 py-3 flex items-center justify-center bg-[#004AAD] rounded-3xl  font-bold text-white  mt-5"
+            className=" px-5 py-3 flex items-center justify-center bg-[#004AAD] rounded-3xl  font-bold text-white  mt-5 screen425:text-[14px] screen425:px-[125px]  screen425:rounded-[10px] screen768:py-[10px] screen768:px-[40px]"
             type="submit"
           >
             Sign in
           </button>
-          <div className="flex mt-5 items-center justify-between">
-            <span className="mr-4 text-[20px] font-bold">
-              Create account with
-            </span>
-            <p className="w-[50px] h-[50px] rounded-full border flex items-center justify-center mr-3">
-              <FcGoogle size={30} />
-            </p>
-            <p className="w-[50px] h-[50px] rounded-full border flex items-center justify-center">
-              <SiFacebook size={30} style={{ color: "blue" }} />
-            </p>
-          </div>
+         
         </form>
       </div>
     </div>

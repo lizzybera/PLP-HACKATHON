@@ -21,7 +21,7 @@ const Hero2 = () => {
           className="w-[100%]  h-[100%]"
         >
           <Header />
-          <div className="w-[100%] h-[100%]  flex items-center justify-center screen768:flex-col">
+          <div className="w-[100%] h-[100%]  flex items-center justify-center screen768:flex-col py-5">
             <div className="w-[85%] h-[90%]  flex items-center justify-between screen768:flex-col">
               <div className="text-white flex items-center justify-center flex-col ">
                 <span className=" text-[30px] font-bold screen425:text-[24px]">
@@ -67,19 +67,19 @@ const Hero2 = () => {
                 <div className="w-full flex items-center justify-between text-white">
                   
                   <div className="">
-                    <span className="font-[700]">Mon</span>
+                    <span className="font-[700]">FRI</span>
                     <img src={pic5} alt="Loading..." />
                     <p>27°c</p>
                   </div>
 
                   <div className="">
-                    <span className="font-[700]">Mon</span>
+                    <span className="font-[700]">SAT</span>
                     <img src={pic1} alt="Loading..." />
                     <p>27°c</p>
                   </div>
 
                   <div className="">
-                    <span className="font-[700]">Mon</span>
+                    <span className="font-[700]">SUN</span>
                     <img src={pic3} alt="Loading..." />
                     <p>27°c</p>
                   </div>
@@ -91,7 +91,7 @@ const Hero2 = () => {
                   </div>
 
                   <div className="">
-                    <span className="font-[700]">Mon</span>
+                    <span className="font-[700]">TUE</span>
                     <img src={pic1} alt="Loading..." />
                     <p>27°c</p>
                   </div>
