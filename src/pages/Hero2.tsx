@@ -34,16 +34,16 @@ const Hero2 = () => {
                 <div className=" px-10 py-3 rounded-full bg-[#43677C] flex items-center justify-center my-5 screen425:px-7 screen425:my-2">
                   <GiTrophyCup size={25} />
                   <span className="text-[20px] font-bold screen425:text-[15px]">
-                    Trusted by 75,000
+                    Trusted
                   </span>
                 </div>
                 <div className="flex items-center justify-center screen425:mb-3">
                   <Link to="/detail">
-                  <div className="px-5 cursor-pointer py-3 rounded-md text-white bg-[#F47E45] font-bold mt-4 screen425:my-2 ">
-                    START USING THE API
+                  <div className="px-5 cursor-pointer py-3 rounded-md text-white bg-[#F47E45] font-bold mt-4 screen425:my-2 hover:bg-slate-500 duration-[350ms] hover:text-[darkorange]">
+                    SEARCH
                   </div>
                   </Link>
-                  <span className="ml-3">— It's free!</span>
+                  <span className="ml-3 mt-4 ">— It's free!</span>
                 </div>
               </div>
 
